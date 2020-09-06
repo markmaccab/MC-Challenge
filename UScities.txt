@@ -1,0 +1,39 @@
+NY
+LA
+Chicago
+Houston
+Phoenix
+Philadelphia
+Jacksonville
+Columbus
+Charlotte
+Indianapolis
+Seattle
+Denver
+Washington
+Boston
+Detroit
+Nashville
+Portland
+Oklahoma City
+LV
+Louisville
+Baltimore
+Milwaukee
+Albuquerque
+Atlanta 
+Kansas City
+Omaha
+Virginia Beach
+Minneapolis
+New Orleans
+Wichita
+Honolulu
+San Juan
+Anchorage
+Newark
+Boise
+Des Moines
+Birmingham
+Salt Lake City
+Little Rock

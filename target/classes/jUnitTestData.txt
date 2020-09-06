@@ -1,0 +1,102 @@
+input:
+		//find path 
+//		origin="Chicago";
+//		destination="Chicago";
+//		destination="Boston";
+		origin="Boston";
+//		destination="Philadelphia";
+		destination="Trenton";
+//		destination="Chicago";
+output:
+origin:  Boston   destination:  Trenton
+NO
+Starting from: Trenton there is a path to those cities: 
+Albany,   origin:  Boston   destination:  Trenton
+origin:  Trenton   destination:  Boston
+NO
+Starting from: Boston there is a path to those cities: 
+New York,   Newark,   Philadelphia,   
+
+input:
+		//find path 
+//		origin="Chicago";
+//		destination="Chicago";
+//		destination="Boston";
+		origin="Boston";
+		destination="Philadelphia";
+//		destination="Trenton";
+//		destination="Chicago";
+output:
+origin:  Boston   destination:  Philadelphia
+YES
+Segments:  
+Boston   Newark
+Newark   Philadelphia
+
+input:
+		//find path 
+//		origin="Chicago";
+//		destination="Chicago";
+		destination="Boston";
+		origin="Boston";
+//		destination="Philadelphia";
+//		destination="Trenton";
+//		destination="Chicago";
+output:
+origin:  Boston   destination:  Boston
+YES
+Segments:  
+
+input:
+		//find path 
+//		origin="Chicago";
+		destination="Chicago";
+//		destination="Boston";
+		origin="Boston";
+//		destination="Philadelphia";
+//		destination="Trenton";
+//		destination="Chicago";
+output:
+origin:  Boston   destination:  Chicago
+NO
+a city does not appear in any segment
+origin:  Boston   destination:  Chicago
+origin:  Chicago   destination:  Boston
+NO
+a city does not appear in any segment
+
+input:
+		//find path 
+		origin="Chicago";
+		destination="Chicago";
+//		destination="Boston";
+//		origin="Boston";
+//		destination="Philadelphia";
+//		destination="Trenton";
+//		destination="Chicago";
+output:
+origin:  Chicago   destination:  Chicago
+NO
+a city does not appear in any segment
+origin:  Chicago   destination:  Chicago
+origin:  Chicago   destination:  Chicago
+NO
+a city does not appear in any segment
+
+input:
+		//find path 
+//		origin="Chicago";
+		destination="Chicago";
+//		destination="Boston";
+		origin="Boston";
+//		destination="Philadelphia";
+//		destination="Trenton";
+//		destination="Chicago";
+output:
+origin:  Boston   destination:  Chicago
+NO
+a city does not appear in any segment
+origin:  Boston   destination:  Chicago
+origin:  Chicago   destination:  Boston
+NO
+a city does not appear in any segment

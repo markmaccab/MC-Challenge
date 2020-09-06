@@ -1,0 +1,214 @@
+package com.luv2code.springboot.demo.mycoolapp.rest;
+
+//	import java.util.HashSet;
+import java.util.List;
+//	import java.util.PriorityQueue;
+//	import java.util.Set;
+import java.util.Stack;
+
+public class Path {
+	int dist[]; 
+//	private Set<Integer> settled; 
+//	private PriorityQueue<Integer> pq; 
+//	private int V; // Number of vertices 
+	List<List<Integer> > adj; 
+
+	
+	
+	public Path(int V) 
+	{ 
+		dist = new int[V];  
+	} 
+
+//	Documents path with node names
+	Stack<Integer> pathStack = new Stack<Integer>(); 
+
+//keeps the names of nodes that were children nodes that were not used in the path		
+	Stack<Integer> recursionStack = new Stack<Integer>();
+	
+	int first;
+	int current;
+	int second = 0;
+	int src;
+	boolean done = true;
+	
+// Function for Path Algorithm 
+//
+	public void findPath(List<List<Integer> > adj, int src, int target) 
+	{ 
+		this.adj = adj;
+		this.src = src;
+
+/*
+START:
+ */
+		
+		
+		
+/*
+mCURRENT:
+If current==src, goto mSUCCESS
+Push current on pathStack
+Get left leaf
+If current Has left Leaf, Push all peers to recursionStack, current=left leaf, goto mCURRENT
+If current Has no leaves, peek recursionStack for peer of current
+If there is a peer to current, current=pop recursionStack , goto mCURRENT
+If there is no peer, peek at pathStack
+If not empty, current=pop pathStack, goto mCURRENT
+If empty, goto mNOPATH
+ */
+//	mSTART		
+		current = target;	//	'current' Node
+		
+// 	Try to get next Node in Path by using left leaf of 'current' Node
+//	next Node is left leaf of previous node
+
+//	Bring candidate for the next Node in path from recursionStack
+		
+		pathStack.push(current);
+		System.out.println("Push Node " + current);
+		
+		int l = 1;
+		System.out.println("current case " + l);
+
+				
+		while (done)
+			
+			l = nextLeaf(l); 
+			
+	}
+	
+	public int nextLeaf(int m)
+	{
+	      switch(m)
+	      {
+		 case 1:
+		 {
+			 m=mCURRENT();
+			 return m;
+		 }
+		 case 2:
+		 {
+			 m=peerLeaf();
+			 return m;
+		 }
+
+		 case 3:
+		 {
+			 m=noLeaf();
+			 return m;
+		 }
+
+		 default:
+		 {
+			   System.out.println("Default ");
+			   done = false;
+			   break;
+		 }
+		      }
+	      return 0;
+		}
+	
+	public int mCURRENT()
+	{
+	
+//	 	Try to get next Node in Path by using left leaf of 'current' Node
+//		next Node is left leaf of previous node
+		
+			while (true) { 
+			
+			if (current == src)
+			{
+		System.out.println("Source Node " + src + " found ");
+		prtStack();
+		return 4;
+							
+			}
+				if (adj.get(current).size() > 0)
+	{
+//				v is left leaf. the next Node in Path
+				int v = adj.get(current).get(0);	
+				
+//				place peers of v in recursionStack				
+				
+						for (int i = 1; i < adj.get(current).size(); i++) { 
+							int w = adj.get(current).get(i); 
+							recursionStack.push(w); 
+							System.out.println("Push Node " + w);
+							
+							}
+
+				if (pathStack.search(v) < 0)	//	is v in Path?
+				{
+//		v is not in Path
+					pathStack.push(v); 			//	add v to Path
+					second = v;
+					System.out.println("Push Node " + v);
+				
+				}
+				else
+				
+					{
+//		v is already in Path			
+					System.out.println("Node " + v + " is already in the path ");
+					prtStack();
+					pathStack.pop();			// look s like mistake in previous code	
+					current = recursionStack.pop();
+					return 1;
+				
+				}
+				
+
+					
+		}
+			else
+		{
+				{
+//		'current' Node has no leaves			
+				System.out.println(current + "'current' Node has no leaves ");
+				prtStack();
+				return 3;
+				}
+			}
+	
+				current = second;
+				prtStack();
+			}
+	
+	
+		}
+
+	public int peerLeaf()
+	{
+		System.out.println("in peerLeaf");
+		return 0;	
+	}
+	
+	public int noLeaf()
+	{
+		System.out.println("in noLeaf");
+		return 0;	
+	}
+	
+	public void prtStack()
+	{
+		
+		System.out.println("pathStack elements");
+		for ( int i = 0; i < pathStack.size(); i++) { 
+			int v = pathStack.get(i); 
+			System.out.println("pathStack element " + i + " is node " + v);
+		}
+			System.out.println("recursionStack elements");
+			for ( int i = 0; i < recursionStack.size(); i++) { 
+				int v = recursionStack.get(i); 
+				System.out.println("recursionStack element " + i + " is node " + v);
+			}
+			
+	}
+	
+	}
+
+
+
+
+	

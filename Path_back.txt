@@ -1,0 +1,146 @@
+package com.luv2code.springboot.demo.mycoolapp.rest;
+
+//	import java.util.HashSet;
+import java.util.List;
+//	import java.util.PriorityQueue;
+//	import java.util.Set;
+import java.util.Stack;
+
+public class Path {
+	int dist[]; 
+//	private Set<Integer> settled; 
+//	private PriorityQueue<Integer> pq; 
+//	private int V; // Number of vertices 
+	List<List<Integer> > adj; 
+
+	
+	
+	public Path(int V) 
+	{ 
+		dist = new int[V];  
+	} 
+
+//	Documents path with node names
+	Stack<Integer> pathStack = new Stack<Integer>(); 
+
+//keeps the names of nodes that were children nodes that were not used in the path		
+	Stack<Integer> recursionStack = new Stack<Integer>();
+	
+	int first;
+	int second = 0;
+
+	
+// Function for Path Algorithm 
+//
+	public void findPath(List<List<Integer> > adj, int src, int target) 
+	{ 
+		this.adj = adj; 
+
+		first = target;	//	'first' Node
+
+// 	Try to get next Node in Path by using left leaf of 'first' Node		
+		
+		for (int k = 0; k < 2; k++) { 
+		
+		if (adj.get(first).size() > 0)
+{
+			int v = adj.get(first).get(0);	//	v is next Node in Path 
+			if (pathStack.search(v) < 0)	//	is v in Path?
+			{
+//	v is not in Path
+				pathStack.push(v); 			//	add v to Path
+				System.out.println("Push Node " + v);
+			
+//	place peers of v in recursionStack				
+				
+			for (int i = 1; i < adj.get(first).size(); i++) { 
+				v = adj.get(first).get(i); 
+				recursionStack.push(v); 
+				System.out.println("Push Node " + v);
+				
+				}
+			}
+			else
+			{
+//	v is already in Path			
+				System.out.println("Node " + first + " is already the path ");
+			
+			}
+			
+
+				
+	}
+		else
+	{
+//	'first' Node has no leaves			
+			System.out.println("No path from Node " + src + "to Node " + first + " yet");
+	}
+	
+	
+	System.out.println("pathStack elements");
+	for (int i = 0; i < pathStack.size(); i++) { 
+		int v = pathStack.get(i); 
+		System.out.println("pathStack element " + i + " is node " + v);
+	}
+		System.out.println("recursionStack elements");
+		for (int i = 0; i < recursionStack.size(); i++) { 
+			int v = recursionStack.get(i); 
+			System.out.println("recursionStack element " + i + " is node " + v);
+		}
+		
+		first = second;
+		
+	}
+
+//	Bring candidate for the next Node in path from recursionStack
+		
+	}
+		
+	public void leftLeaf()
+	{
+	
+//	 	Try to get next Node in Path by using left leaf of 'first' Node		
+		
+			for (int k = 0; k < 2; k++) { 
+			
+			if (adj.get(first).size() > 0)
+	{
+				int v = adj.get(first).get(0);	//	v is next Node in Path 
+				if (pathStack.search(v) < 0)	//	is v in Path?
+				{
+//		v is not in Path
+					pathStack.push(v); 			//	add v to Path
+					System.out.println("Push Node " + v);
+				
+//		place peers of v in recursionStack				
+					
+				for (int i = 1; i < adj.get(first).size(); i++) { 
+					v = adj.get(first).get(i); 
+					recursionStack.push(v); 
+					System.out.println("Push Node " + v);
+					
+					}
+				}
+				else
+				{
+//		v is already in Path			
+					System.out.println("Node " + first + " is already in the path ");
+				
+				}
+				
+
+					
+		}
+			else
+		{
+//		'first' Node has no leaves			
+				System.out.println(first + "'first' Node has no leaves ");
+		}
+	
+	
+	}
+	
+	
+		}
+}
+	

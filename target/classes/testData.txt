@@ -1,0 +1,22 @@
+Input:
+http://localhost:8080/employees?origin=Boston&destination=Boston
+http://localhost:8080/employees?origin=Chicago&destination=Chicago
+http://localhost:8080/employees?origin=Boston&destination=Chicago
+http://localhost:8080/employees?origin=Trenton&destination=Philadelphia
+http://localhost:8080/employees?origin=Boston&destination=Newark
+
+Output (not in order):
+origin:  Boston   destination:  Newark
+YES
+origin:  Trenton   destination:  Philadelphia
+NO
+origin:  Boston   destination:  Philadelphia
+YES
+origin:  Boston   destination:  Chicago
+NO
+origin:  Chicago   destination:  Chicago
+NO
+origin:  Chicago   destination:  Chicago
+NO
+origin:  Boston   destination:  Boston
+YES
